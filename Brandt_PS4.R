@@ -2,7 +2,11 @@
 
 # Getting Started
 
-myFunction <- function(){
+# The function Monte_Hall plays a condensed version of the Monte_Hall game.
+# There are no arguments to the function.
+# The function will generate two numbers between 1 and 3, inclusive.
+# If those two numbers are the same, Monte_Hall returns TRUE. Otherwise, it returns FALSE.
+Monte_Hall <- function(){
   doorthing1 <- sample(1:3,1)
   doorthing2 <- sample(1:3, 1)
   if (doorthing1 == doorthing2){
@@ -13,7 +17,7 @@ myFunction <- function(){
   return (x)
 }
 
-myFunction(sample(1:3, 1), sample(1:3, 1))
+Monte_Hall()
 # Should return a TRUE if these samples are equal and
 # a false if they are not
 
