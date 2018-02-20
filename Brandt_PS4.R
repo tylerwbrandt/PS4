@@ -108,3 +108,12 @@ for (i in 1:1000){
 }
 true_winners <- length(true_results[true_results == TRUE])
 
+# Which strategy is better?
+if (true_winners > false_winners){
+  print ("You should switch")
+} else if (false_winners > true_winners){
+  print ("You should not switch")
+} else {
+  print ("It doesn't matter")
+}
+
