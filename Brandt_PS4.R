@@ -67,8 +67,11 @@ setMethod("PlayGame", "door",
             object @ chosenDoor <- random2
           } else if (object @ switch == TRUE){
             possible_doors <- c(1,2,3)
-            possible_doors <- subset(possible_doors, possible_doors != object @ carDoor)
-            object @ chosenDoor <- sample(possible_doors, 1)
+            possible_goats <- subset(possible_doors, possible_doors != object @ carDoor)
+            goat_door <- sample(subset(possible_goats, possible_goats != object @ chosenDoor),1)
+            possible_doors <- subset(possible_doors, possible_doors != goat_door)
+            new_door <- subset(possible_doors, possible_doors != object @ chosenDoor)
+            object @ chosenDoor <- new_door
           }
           if (object @ chosenDoor == object @ carDoor){
             object @ winner <- TRUE
