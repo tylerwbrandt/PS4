@@ -84,3 +84,12 @@ setMethod("PlayGame", "door",
 generic_door <- new("door", chosenDoor = sample(1:3,1), carDoor = sample(1:3,1), switch = TRUE, winner = TRUE)
 PlayGame(generic_door)
 
+possible_doors <- c(1,2,3)
+possible_goats <- subset(possible_doors, possible_doors != generic_door @ carDoor)
+subset(possible_goats, possible_goats != generic_door @ chosenDoor)
+goat_door <- sample(subset(possible_goats, possible_goats != generic_door @ chosenDoor),1)
+possible_doors <- subset(possible_doors, possible_doors != goat_door)
+new_door <- subset(possible_doors, possible_doors != object @ chosenDoor)
+object @ chosenDoor <- new_door
+
+goat_door
