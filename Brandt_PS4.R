@@ -51,7 +51,13 @@ setValidity("door", function(object){
 
 # 2. Create PlayGame Function
 
-# Door object must include valid values for all slots, but the doors will end up being randomly generated
+# The PlayGame function takes in a valid door object as an argument.
+# It will then play the Monte Hall game. The chosenDoor and carDoor will be randomly assigned.
+# The function will then remove one of the doors that is neither the carDoor nor the chosenDoor.
+# If switch == TRUE, then chosenDoor will switch to the other door that remains.
+# If switch == FALSE, then chosenDoor will stay the same.
+# The function assigns the winner slot based on whether or not chosenDoor == carDoor at the end of the game.
+# The entire door object will be returned after the game's completion.
 setGeneric("PlayGame",
            function(object){
              standardGeneric("PlayGame")
