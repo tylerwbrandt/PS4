@@ -83,8 +83,4 @@ setMethod("PlayGame", "door",
 
 generic_door <- new("door", chosenDoor = sample(1:3,1), carDoor = sample(1:3,1), switch = TRUE, winner = TRUE)
 PlayGame(generic_door)
-traceback()
 
-debug(PlayGame)
-PlayGame(generic_door)
-undebug(PlayGame)
