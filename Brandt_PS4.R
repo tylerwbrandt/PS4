@@ -97,3 +97,14 @@ false_results <- NULL
 for (i in 1:1000){
   false_results <- c(false_results, PlayGame(false_door) @ winner)
 }
+false_winners <- length(false_results[false_results == TRUE])
+
+
+# switch == TRUE simulation
+true_door <- new("door", chosenDoor = sample(1:3,1), carDoor = sample(1:3,1), switch = TRUE, winner = TRUE)
+true_results <- NULL
+for (i in 1:1000){
+  true_results <- c(true_results, PlayGame(true_door) @ winner)
+}
+true_winners <- length(true_results[true_results == TRUE])
+
