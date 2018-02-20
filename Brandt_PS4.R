@@ -26,12 +26,14 @@ setClass(Class = "door",
          representation = representation(
            chosenDoor = "numeric",
            carDoor = "numeric",
-           switch = "logical"
+           switch = "logical",
+           winner = "logical"
          ),
          prototype = prototype(
            chosenDoor = NULL,
            carDoor = NULL,
-           switch = NULL
+           switch = NULL,
+           winner = NULL
          ))
 
 # chosenDoor is 1,2, or 3. carDoor is 1,2, or 3. switch is T or F
@@ -49,8 +51,7 @@ setValidity("door", function(object){
 
 # 2. Create PlayGame Function
 
-# Door object must include a value for switch. All other values will end up being generated
-# as part of the function.
+# Door object must include valid values for all slots, but the doors will end up being randomly generated
 setGeneric("PlayGame",
            function(object){
              standardGeneric("PlayGame")
@@ -61,6 +62,7 @@ setMethod("PlayGame", "door",
           random1 <- sample(1:3,1)
           object @ carDoor <- random1
           random2 <- sample(1:3,1)
+          browser()
           if (object @ switch == FALSE){
             object @ chosenDoor <- random2
           } else if (object @ switch == TRUE){
@@ -73,9 +75,10 @@ setMethod("PlayGame", "door",
           } else {
             object @ winner <- FALSE
           }
+          return (object)
           })
 
-generic_door <- new("door", chosenDoor = sample(1:3,1), carDoor = sample(1:3,1), switch = TRUE)
+generic_door <- new("door", chosenDoor = sample(1:3,1), carDoor = sample(1:3,1), switch = TRUE, winner = TRUE)
 PlayGame(generic_door)
 traceback()
 
