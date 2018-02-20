@@ -74,3 +74,7 @@ setMethod("PlayGame", "door",
 
 generic_door <- new("door")
 PlayGame(generic_door)
+
+debug(PlayGame)
+PlayGame(generic_door)
+undebug(PlayGame)
