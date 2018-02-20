@@ -21,3 +21,17 @@ Monte_Hall()
 # Should return a TRUE if these samples are equal and
 # a false if they are not
 
+# 1. Create new class
+setClass(class = "door",
+         representation = representation(
+           chosenDoor = "numeric",
+           carDoor = "numeric",
+           switch = "logical"
+         ),
+         prototype = prototype(
+           chosenDoor = NULL,
+           carDoor = NULL,
+           switch = NULL
+         ))
+
+
