@@ -2,9 +2,10 @@
 
 # Getting Started
 
-myFunction<-function(doorthing, doorthing2, x){
-  doorthing1<-doorthing2<-sample(1:3, 1)
-  if (doorthing1==doorthing2){ x<-TRUE } else { x==FALSE }
+myFunction <- function(x){
+  doorthing1 <- sample(1:3,1)
+  doorthing2 <- sample(1:3, 1)
+  if (doorthing1 == doorthing2){ x<-TRUE } else { x==FALSE }
     x
 }
 
