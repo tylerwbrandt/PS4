@@ -22,7 +22,7 @@ Monte_Hall()
 # a false if they are not
 
 # 1. Create new class
-setClass(class = "door",
+setClass(Class = "door",
          representation = representation(
            chosenDoor = "numeric",
            carDoor = "numeric",
@@ -34,4 +34,20 @@ setClass(class = "door",
            switch = NULL
          ))
 
+# chosenDoor is 1,2, or 3. carDoor is 1,2, or 3. switch is T or F
+setValidity("door", function(object){
+  if (!(object @ chosenDoor %in% c(1,2,3))){
+    return ("@chosenDoor must be either 1, 2, or 3")
+  }
+  if (!(object @ carDoor %in% c(1,2,3))){
+    return ("@carDoor must be either 1, 2, or 3")
+  }
+  if (!(object @ switch %in% c(T,F))){
+    return ("@switch must be either TRUE or FALSE")
+  }
+})
 
+new("door", chosenDoor = 1, carDoor = 1, switch = T)
+new("door", chosenDoor = 0, carDoor = 1, switch = T)
+new("door", chosenDoor = 1, carDoor = 0, switch = T)
+new("door", chosenDoor = 1, carDoor = 1, switch = 7)
