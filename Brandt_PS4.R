@@ -88,3 +88,13 @@ setMethod("PlayGame", "door",
 
 generic_door <- new("door", chosenDoor = sample(1:3,1), carDoor = sample(1:3,1), switch = TRUE, winner = TRUE)
 PlayGame(generic_door)
+
+# Simulation
+
+# switch == FALSE simulation
+false_door <- new("door", chosenDoor = sample(1:3,1), carDoor = sample(1:3,1), switch = FALSE, winner = FALSE)
+false_results <- NULL
+for (i in 1:1000){
+  PlayGame(false_door)
+  false_results <- c(false_results, false_door @ winner)
+}
