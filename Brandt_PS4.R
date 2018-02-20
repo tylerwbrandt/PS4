@@ -48,6 +48,9 @@ setValidity("door", function(object){
 })
 
 # 2. Create PlayGame Function
+
+# Door object must include a value for switch. All other values will end up being generated
+# as part of the function.
 setGeneric("PlayGame",
            function(object){
              standardGeneric("PlayGame")
