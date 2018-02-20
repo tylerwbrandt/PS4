@@ -7,9 +7,9 @@
 # The function will generate two numbers between 1 and 3, inclusive.
 # If those two numbers are the same, Monte_Hall returns TRUE. Otherwise, it returns FALSE.
 Monte_Hall <- function(){
-  doorthing1 <- sample(1:3,1)
-  doorthing2 <- sample(1:3, 1)
-  if (doorthing1 == doorthing2){
+  door1 <- sample(1:3,1)
+  door2 <- sample(1:3, 1)
+  if (door1 == door2){
     x <- TRUE
   } else {
     x <- FALSE
@@ -47,7 +47,30 @@ setValidity("door", function(object){
   }
 })
 
-new("door", chosenDoor = 1, carDoor = 1, switch = T)
-new("door", chosenDoor = 0, carDoor = 1, switch = T)
-new("door", chosenDoor = 1, carDoor = 0, switch = T)
-new("door", chosenDoor = 1, carDoor = 1, switch = 7)
+# 2. Create PlayGame Function
+setGeneric("PlayGame",
+           function(object){
+             standardGeneric("PlayGame")
+           })
+
+setMethod("PlayGame", "door",
+          function(object){
+          random1 <- sample(1:3,1)
+          object @ carDoor <- random1
+          random2 <- sample(1:3,1)
+          if (object @ switch == FALSE){
+            object @ chosenDoor <- random2
+          } else if (object @ switch == TRUE){
+            possible_doors <- c(1,2,3)
+            possible_doors <- subset(possible_doors, possible_doors != object @ carDoor)
+            object @ chosenDoor <- sample(possible_doors, 1)
+          }
+          if (object @ chosenDoor == object @ carDoor){
+            object @ winner <- TRUE
+          } else {
+            object @ winner <- FALSE
+          }
+          })
+
+generic_door <- new("door")
+PlayGame(generic_door)
